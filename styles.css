@@ -1,0 +1,258 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f4efe6;
+  --ink: #1b1814;
+  --muted: #6b6258;
+  --card: #fffaf3;
+  --line: #e4d8c6;
+  --accent: #c45c26;
+  --accent-ink: #fff;
+  --done: #3f6b4a;
+  --danger: #9b2c2c;
+  --shadow: 0 18px 50px rgba(60, 40, 16, 0.12);
+  --radius: 22px;
+  font-family: "Segoe UI", "IBM Plex Sans", system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161310;
+    --ink: #f6efe4;
+    --muted: #b3a696;
+    --card: #221c18;
+    --line: #3a3129;
+    --accent: #e08a4f;
+    --accent-ink: #1b130d;
+    --done: #8fce9a;
+    --danger: #f0a0a0;
+    --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgba(196, 92, 38, 0.16), transparent),
+    var(--bg);
+  color: var(--ink);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.page {
+  width: min(640px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 3rem 0 4rem;
+}
+
+.hero h1 {
+  margin: 0.15rem 0 0.4rem;
+  font-size: clamp(2rem, 6vw, 3.1rem);
+  letter-spacing: -0.04em;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.lede,
+.hint,
+.foot,
+.empty,
+.counter {
+  color: var(--muted);
+}
+
+.lede {
+  margin: 0 0 1.6rem;
+  line-height: 1.5;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+
+.composer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.6rem;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+#task-input,
+.task-list input[type="text"] {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+}
+
+#task-input:focus,
+button:focus-visible,
+.task-list input[type="text"]:focus {
+  outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline-offset: 2px;
+}
+
+button {
+  border: 0;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.composer button {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  padding: 0 1.15rem;
+}
+
+.hint {
+  margin: 0.65rem 0 0;
+  font-size: 0.85rem;
+}
+
+.error {
+  margin: 0.4rem 0 0;
+  color: var(--danger);
+  font-size: 0.9rem;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.1rem 0 0.6rem;
+}
+
+.filters {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.filters button,
+.text-btn {
+  background: transparent;
+  color: var(--muted);
+  padding: 0.35rem 0.7rem;
+}
+
+.filters button[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.text-btn:hover {
+  color: var(--danger);
+}
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.task-list li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.75rem 0.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.task-list li.done .title {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.title {
+  margin: 0;
+  word-break: break-word;
+}
+
+.icon-btn {
+  background: transparent;
+  color: var(--muted);
+  padding: 0.35rem;
+}
+
+.icon-btn:hover {
+  color: var(--danger);
+}
+
+.empty {
+  margin: 0.4rem 0 0;
+  text-align: center;
+  padding: 1.4rem 0.5rem 0.6rem;
+}
+
+.empty[hidden],
+[hidden] {
+  display: none !important;
+}
+
+.foot {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 520px) {
+  .composer {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

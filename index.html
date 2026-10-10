@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clearlist — a real to-do app</title>
+    <meta
+      name="description"
+      content="A small, working to-do list. Add, edit, complete, and persist tasks in your browser."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#task-input">Skip to task input</a>
+
+    <div class="page">
+      <header class="hero">
+        <p class="eyebrow">GHW mini app</p>
+        <h1>Clearlist</h1>
+        <p class="lede">
+          Add a task, check it off, come back tomorrow. Your list stays in this
+          browser.
+        </p>
+      </header>
+
+      <main class="card">
+        <form id="task-form" class="composer" autocomplete="off">
+          <label class="visually-hidden" for="task-input">New task</label>
+          <input
+            id="task-input"
+            name="task"
+            type="text"
+            maxlength="140"
+            placeholder="What needs doing?"
+            aria-describedby="form-hint"
+          />
+          <button type="submit">Add</button>
+        </form>
+        <p id="form-hint" class="hint">Press Enter to add. Double-click a task to edit.</p>
+        <p id="form-error" class="error" role="alert" hidden></p>
+
+        <div class="toolbar">
+          <p id="counter" class="counter" aria-live="polite">0 items left</p>
+          <div class="filters" role="tablist" aria-label="Filter tasks">
+            <button type="button" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-filter="active" aria-pressed="false">Active</button>
+            <button type="button" data-filter="completed" aria-pressed="false">Done</button>
+          </div>
+          <button type="button" id="clear-completed" class="text-btn" hidden>
+            Clear completed
+          </button>
+        </div>
+
+        <ul id="task-list" class="task-list" aria-label="Tasks"></ul>
+        <p id="empty-state" class="empty">No tasks yet. Add the first one above.</p>
+      </main>
+
+      <footer class="foot">
+        Built with Cursor for Global Hack Week: Hacktoberfest · Challenge 1
+      </footer>
+    </div>
+
+    <div id="announcer" class="visually-hidden" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
